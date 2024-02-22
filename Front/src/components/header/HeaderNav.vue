@@ -40,7 +40,7 @@ function toggle() {
 .header-nav-container {
   height: max-content;
   position: fixed;
-  z-index: 10;
+  z-index: 2;
   display: flex;
   justify-content: center;
   justify-items: center;
