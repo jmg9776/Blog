@@ -65,10 +65,10 @@ const surroundingPages = computed(() => {
         <router-link v-for="value in data.content" :to="'/post/' + value.id" class="card-board">
           <div class="image-container">
             <template v-if="value.primaryImage==null">
-              <img :src="noImage">
+              <img :src="noImage" alt="이미지 없음">
             </template>
             <template v-else>
-              <img :src="value.primaryImage">
+              <img :src="value.primaryImage" alt="이미지">
             </template>
           </div>
           <p class="board-name">
@@ -88,6 +88,9 @@ const surroundingPages = computed(() => {
           </p>
         </router-link>
       </div>
+      <div v-else class="no-content">
+        No Content
+      </div>
       <PageNation
           :max="max"
           :navigate-to-page="navigateToPage"
@@ -99,8 +102,13 @@ const surroundingPages = computed(() => {
 </template>
 
 <style scoped>
-
-
+.no-content {
+  text-align: center;
+  font-size: 25px;
+  margin-top: 45px;
+  font-weight: bolder;
+  color: #333333;
+}
 .container {
   height: max-content;
   background: white;
