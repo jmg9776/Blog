@@ -122,7 +122,7 @@ const surroundingPages = computed(() => {
 }
 
 .gradiant {
-  margin-top: 95px;
+  margin-top: 50px;
   color: rgb(75, 71, 72);
   font-size: 40px;
   font-weight: bold;
