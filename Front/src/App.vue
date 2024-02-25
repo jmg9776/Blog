@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Header from '@/features/nav/header/HeaderNav.vue'
-import {computed, onBeforeUnmount, onMounted, ref, watch} from "vue";
+import {computed, onBeforeUnmount, onMounted, ref} from "vue";
 import SideBar from "@/features/nav/side/Sidebar.vue";
 import MainSection from "@/features/main/MainSection.vue";
 import store from "@/store";
@@ -20,26 +20,6 @@ onBeforeUnmount(() => {
 });
 
 const hamButtonClick = computed(() => store.state.hamButtonClick);
-
-function disableScroll() {
-  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-  window.onscroll = function () {
-    window.scrollTo(scrollLeft, scrollTop);
-  };
-}
-
-function enableScroll() {
-  window.onscroll = null;
-}
-
-watch(hamButtonClick, (newValue) => {
-  if (newValue) {
-    disableScroll();
-  } else {
-    enableScroll();
-  }
-});
 
 function toggle() {
   store.dispatch('toggleHamButton');
@@ -79,7 +59,7 @@ section {
   padding: 30px 30px 100px;
   display: flex;
   justify-content: center;
-  min-height: calc(100vh - 372px);
+  min-height: calc(100vh - 362px);
 }
 
 .footer {
