@@ -71,21 +71,26 @@ const surroundingPages = computed(() => {
               <img :src="value.primaryImage" alt="이미지">
             </template>
           </div>
-          <p class="board-name">
-            {{ value.boardName }}
-          </p>
-          <p class="title">
-            {{ value.title }}
-          </p>
-          <p class="content">
-            {{ value.content }}...
-          </p>
-          <p class="date">
-            {{ value.createAt ? value.createAt.split("T")[0] : '' }}
-          </p>
-          <p class="views">
-            조회수 : {{ value.view }}
-          </p>
+          <div class="text-container">
+            <div style="display: flex">
+              <p class="board-name">
+                {{ value.boardName }}
+              </p>
+              <p class="views">
+                조회수 : {{ value.view }}
+              </p>
+            </div>
+
+            <p class="title">
+              {{ value.title }}
+            </p>
+            <p class="content">
+              {{ value.content }}...
+            </p>
+            <p class="date">
+              {{ value.createAt ? value.createAt.split("T")[0] : '' }}
+            </p>
+          </div>
         </router-link>
       </div>
       <div v-else class="no-content">
@@ -102,6 +107,13 @@ const surroundingPages = computed(() => {
 </template>
 
 <style scoped>
+.text-container {
+  padding: 20px;
+  display: flex;
+  gap: 12px;
+  height: calc(100% - 200px);
+  flex-direction: column;
+}
 .no-content {
   text-align: center;
   font-size: 25px;
@@ -110,10 +122,9 @@ const surroundingPages = computed(() => {
   color: #333333;
 }
 .container {
-  height: max-content;
   background: white;
   width: 100%;
-  padding: 30px 30px 100px;
+  padding: 0 0 100px;
   display: flex;
   justify-content: center;
 }
@@ -147,8 +158,6 @@ const surroundingPages = computed(() => {
 }
 
 .board-name {
-  margin-top: 20px;
-  margin-left: 15px;
   border-radius: 10px;
   background: #302f2d;
   padding: 6px 10px;
@@ -157,7 +166,6 @@ const surroundingPages = computed(() => {
 }
 
 .card {
-
   margin-top: 55px;
   display: flex;
   flex-wrap: wrap;
@@ -171,20 +179,15 @@ const surroundingPages = computed(() => {
   transform: scale(1.02);
 }
 
-.title, .content, .date, .views {
-  margin-top: 10px;
-  margin-left: 20px;
-}
-
 .title {
   color: #302f2d;
 }
 
 .content {
-  width: 90%;
+  line-height: 1.3rem;
+  min-height: 55px;
   white-space: normal;
   font-size: 14px;
-  margin: 12px 20px;
   color: #888888;
 }
 
@@ -194,8 +197,11 @@ const surroundingPages = computed(() => {
 }
 
 .views {
-  color: #302f2d;
-  font-size: 15px;
+  flex: 1;
+  text-align: right;
+  color: #4b4748;
+  font-size: 14px;
+  line-height: 25px;
 }
 
 .card-board {
