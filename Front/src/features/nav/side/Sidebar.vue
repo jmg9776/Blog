@@ -2,13 +2,12 @@
 
 import profileBack from "@/assets/profileback.png";
 import profileImg from "@/assets/profile.png";
-import MenuDock from "@/components/sidebar/menu/dock/MenuDock.vue";
-import TitleMenu from "@/components/sidebar/menu/title/TitleMenu.vue";
+import MenuDock from "@/features/nav/side/menu/dock/MenuDock.vue";
+import TitleMenu from "@/features/nav/side/menu/title/TitleMenu.vue";
 import {computed, onMounted, ref} from "vue";
-import Search from "@/components/sidebar/menu/Search.vue";
-import {ApiService} from "@/api/board.ts"
+import Search from "@/features/nav/side/menu/Search.vue";
+import {ApiService} from "@/features/nav/side/SidebarService.ts"
 import store from "@/store";
-import {AxiosResponse} from "axios";
 
 const data = ref<Board>({boardCategoryInfoResponseList: [], count: 0})
 const apiService = new ApiService();
@@ -18,11 +17,9 @@ interface Board {
   boardCategoryInfoResponseList: any[];
 }
 
-onMounted(() => {
-  apiService.getBardCategoryInfoAll(
-      (response: AxiosResponse) => {
-        data.value = response.data;
-      });
+onMounted(async () => {
+  data.value = await apiService.getBardCategoryInfoAll();
+  console.log(data, data.value)
 });
 
 
@@ -37,7 +34,6 @@ const hamButtonClick = computed(() => store.state.hamButtonClick);
 <template>
   <div class="sidebar" :class="{ 'expanded': props.maxViewWidth, 'collapsed': !props.maxViewWidth&&!hamButtonClick }">
     <img :src="profileBack" class="profile-background">
-
     <div class="profile-image-container">
       <img :src="profileImg" alt="Profile Image" class="profile-image">
     </div>
@@ -47,7 +43,6 @@ const hamButtonClick = computed(() => store.state.hamButtonClick);
     </div>
     <menu-dock/>
     <search></search>
-
     <RouterLink to="/board/All" :key="data.count" class="content-link">CONTENT ({{ data.count }})</RouterLink>
 
     <div v-for="category in data.boardCategoryInfoResponseList" :key="category.categoryName">
@@ -64,6 +59,7 @@ const hamButtonClick = computed(() => store.state.hamButtonClick);
   background: none;
   width: 100%;
 }
+
 .sidebar {
   -webkit-user-select: none;
   -moz-user-select: none;

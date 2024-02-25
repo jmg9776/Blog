@@ -14,7 +14,7 @@ const props = defineProps<{
     <span v-for="page in surroundingPages" :key="page" :class="['page-item', { active: +props.num + 1 === page }]" @click="navigateToPage(page - 1)">
       {{ page }}
     </span>
-    <span v-if="+props.num < props.max - 1" @click="navigateToPage(+props.num + 1)" class="page-item">Next</span>
+    <span v-if="+props.num < props.max - 1" class="page-item" @click="navigateToPage(+props.num + 1)">Nxt</span>
   </div>
 </template>
 

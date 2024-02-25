@@ -14,41 +14,46 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  text-decoration: none;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  vertical-align: baseline;
-  word-spacing: 1px;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    word-spacing: 1px;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block;
+    display: block;
+}
 
-}
 body {
-  line-height: 1;
-  background-color: #403d39;
-  font-family: 'Noto Sans KR', sans-serif;
-  overflow-x: hidden;
+    line-height: 1;
+    background-color: #403d39;
+    font-family: 'Noto Sans KR', sans-serif;
+    overflow-x: hidden;
 }
+
 ol, ul {
-  list-style: none;
+    list-style: none;
 }
+
 blockquote, q {
-  quotes: none;
+    quotes: none;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
-  content: none;
+    content: none;
 }
+
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }

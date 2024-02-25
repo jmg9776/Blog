@@ -1,32 +1,26 @@
 <script setup lang="ts">
-import {computed, onMounted, watch} from 'vue';
+import {computed, onMounted, ref, watch} from 'vue';
 import {useRoute} from 'vue-router';
-import {ApiService} from '@/api/board.ts'
-import {ref} from "vue";
+import {BoardService} from '@/features/board/BoardService.ts'
 import noImage from "@/assets/noimage.png";
 import Line from "@/assets/line.png";
-import {PostList} from '@/interface/post.ts'
+import {PostList} from '@/features/board/PostList.ts'
 import router from "@/router";
-import PageNation from "@/components/PageNation.vue";
+import PageNation from "@/shared/components/Pagenation.vue";
 
 const route = useRoute();
 const boardName = computed(() => route.params.boardName as string);
 const num = computed(() => route.query.num ? route.query.num as string : "0");
 
-const apiService = new ApiService();
+const boardService = new BoardService();
 
 const data = ref<PostList | null>(null);
 const max = ref(10);
 
-function getPostList(boardName: string) {
-  apiService.getBoardPostList(
-      (response) => {
-        data.value = response.data;
-        max.value = data?.value?.totalPages ?? 0;
-      },
-      boardName,
-      num.value
-  )
+async function getPostList(boardName: string) {
+  const response = boardService.getBoardPostList(boardName, num.value);
+  data.value = await response;
+  max.value = data?.value?.totalPages ?? 0;
 }
 
 onMounted(() => {
@@ -61,48 +55,61 @@ const surroundingPages = computed(() => {
 </script>
 
 <template>
-  <div class="wrapper">
-    <div class="title-container">
-      <h1 class="gradiant">{{ boardName }}</h1>
+  <div class="container">
+    <div class="wrapper">
+      <div class="title-container">
+        <h1 class="gradiant">{{ boardName }}</h1>
+      </div>
+      <img :src="Line" alt="" class="line">
+      <div v-if="data && data.content.length > 0 && data" class="card">
+        <router-link v-for="value in data.content" :to="'/post/' + value.id" class="card-board">
+          <div class="image-container">
+            <template v-if="value.primaryImage==null">
+              <img :src="noImage">
+            </template>
+            <template v-else>
+              <img :src="value.primaryImage">
+            </template>
+          </div>
+          <p class="board-name">
+            {{ value.boardName }}
+          </p>
+          <p class="title">
+            {{ value.title }}
+          </p>
+          <p class="content">
+            {{ value.content }}...
+          </p>
+          <p class="date">
+            {{ value.createAt ? value.createAt.split("T")[0] : '' }}
+          </p>
+          <p class="views">
+            조회수 : {{ value.view }}
+          </p>
+        </router-link>
+      </div>
+      <PageNation
+          :max="max"
+          :navigate-to-page="navigateToPage"
+          :num="num"
+          :surrounding-pages="surroundingPages">
+      </PageNation>
     </div>
-    <img class="line" :src="Line" alt="">
-    <div class="card" v-if="data != null && data.content.length > 0 && data">
-      <router-link :to="'/post/' + value.id" class="card-board" v-for="value in data.content">
-        <div class="image-container">
-          <template v-if="value.primaryImage==null">
-            <img :src="noImage" alt="">
-          </template>
-          <template v-else>
-            <img :src="value.primaryImage" alt="">
-          </template>
-        </div>
-        <p class="board-name">
-          {{ value.boardName }}
-        </p>
-        <p class="title">
-          {{ value.title }}
-        </p>
-        <p class="content">
-          {{ value.content }}...
-        </p>
-        <p class="date">
-          {{ value.createAt ? value.createAt.split("T")[0] : '' }}
-        </p>
-        <p class="views">
-          조회수 : {{ value.view }}
-        </p>
-      </router-link>
-    </div>
-    <PageNation
-        :surrounding-pages="surroundingPages"
-        :max="max"
-        :num="num"
-        :navigate-to-page="navigateToPage">
-    </PageNation>
   </div>
 </template>
 
 <style scoped>
+
+
+.container {
+  height: max-content;
+  background: white;
+  width: 100%;
+  padding: 30px 30px 100px;
+  display: flex;
+  justify-content: center;
+}
+
 .wrapper {
   max-width: 1200px;
   width: 100%;

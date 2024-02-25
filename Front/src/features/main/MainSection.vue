@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import MainVideo from "@/components/main/MainBackground.vue";
-import MainText from "@/components/main/MainText.vue";
+import MainVideo from "@/features/main/MainBackground.vue";
+import MainText from "@/features/main/MainText.vue";
 
 const props = defineProps({
   maxViewWidth: Boolean
