@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import Line from "@/assets/line.png";
 
-import {ref, onMounted, computed} from 'vue';
+import {computed, onMounted, ref} from 'vue';
+import {useRoute} from 'vue-router';
+
 const props = defineProps({
   maxViewWidth: Boolean
 });
@@ -34,7 +36,7 @@ function eraseText() {
     setTimeout(typeText, 1000);
   }
 }
-import { useRoute } from 'vue-router';
+
 const route = useRoute();
 const boardName = computed(() => route.params.boardName as string);
 </script>

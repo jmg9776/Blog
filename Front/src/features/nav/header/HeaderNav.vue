@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
-import HamburgerMenu from "@/components/header/HamburgerMenu.vue";
-import { useScroll } from "@/composables/Scroll";
+import {computed, ref} from 'vue';
+import HamburgerMenu from "@/features/nav/header/HamburgerMenu.vue";
+import {useScroll} from "@/shared/effect/Scroll.ts";
 import store from "@/store";
 
 const { scrollY } = useScroll();
@@ -40,7 +40,7 @@ function toggle() {
 .header-nav-container {
   height: max-content;
   position: fixed;
-  z-index: 2;
+  z-index: 10;
   display: flex;
   justify-content: center;
   justify-items: center;

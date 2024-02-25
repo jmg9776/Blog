@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import Header from './components/header/HeaderNav.vue'
-import {ref, onMounted, onBeforeUnmount, watch} from "vue";
-import SideBar from "@/components/sidebar/SideBar.vue";
-import MainSection from "@/components/main/MainSection.vue";
-import {computed} from "vue";
+import Header from '@/features/nav/header/HeaderNav.vue'
+import {computed, onBeforeUnmount, onMounted, ref, watch} from "vue";
+import SideBar from "@/features/nav/side/Sidebar.vue";
+import MainSection from "@/features/main/MainSection.vue";
 import store from "@/store";
 
 const maxViewWidth = ref<boolean>(false);
@@ -144,7 +143,6 @@ section {
 .content {
   position: absolute;
   height: max-content;
-  min-height: 100vh;
   top: 100vh;
   transition: left 0.2s;
 }

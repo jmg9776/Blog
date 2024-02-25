@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SubMenu from "@/components/sidebar/menu/title/SubMenu.vue";
+import SubMenu from "@/features/nav/side/menu/title/SubMenu.vue";
 import {ref} from "vue";
 
 const props = defineProps({

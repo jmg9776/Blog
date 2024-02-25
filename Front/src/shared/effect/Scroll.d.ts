@@ -1,4 +1,4 @@
-import { Ref } from 'vue';
+import {Ref} from 'vue';
 
 export interface ScrollState {
     scrollY: Ref<number>;

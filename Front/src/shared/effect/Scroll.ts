@@ -1,4 +1,4 @@
-import { ref, onMounted, onBeforeUnmount, Ref } from 'vue';
+import {onBeforeUnmount, onMounted, ref, Ref} from 'vue';
 
 export const useScroll = (): { scrollState: Ref<number>; scrollY: Ref<number> } => {
     const scrollY: Ref<number> = ref(0);
