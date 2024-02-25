@@ -14,15 +14,14 @@ const toggleSubMenu = () => {
 </script>
 
 <template>
-  <div class="title-menu-container " v-if="props.value">
+  <div class="title-menu-container" v-if="props.value">
     <div class="menu-list" @click="toggleSubMenu">
-
       <div class="title" :class="{'click':showSubMenu}">
         <div style="flex: 10; padding-left: 3px; padding-right: 3px">{{props.value.categoryName}}
           <span class="count">{{props.value.count}}</span>
         </div>
-        <div style="padding-top: 0.3px">
-          <svg :class="{ 'flipped-vertical': showSubMenu }"
+        <div style="margin-top: -2px">
+          <svg style="transition: transform 0.3s;" :class="{ 'flipped-vertical': showSubMenu }"
               xmlns="http://www.w3.org/2000/svg"
               width="14px" height="8px">
             <path fill-rule="evenodd"  opacity="0.302" fill="rgb(255, 255, 255)"
@@ -44,7 +43,6 @@ const toggleSubMenu = () => {
 <style scoped>
 .flipped-vertical {
   transform: scaleY(-1);
-  transition: transform 0.3s;
 }
 
 .click {
@@ -65,12 +63,13 @@ const toggleSubMenu = () => {
 .title {
   display: flex;
   justify-items: center;
-  font-size: 12px;
+  font-size: 14px;
   padding: 10px 15px 10px 15px;
   border-radius: 30px;
   color: white;
   margin-left: 8%;
   margin-right: 8%;
+  transition: color 0.3s ease;
 }
 
 .count {

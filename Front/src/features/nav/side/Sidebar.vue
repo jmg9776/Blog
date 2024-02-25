@@ -139,7 +139,7 @@ const hamButtonClick = computed(() => store.state.hamButtonClick);
   margin-top: 39px;
   margin-bottom: 28px;
   line-height: 1.2;
-  font-size: 14px;
+  font-size: 16px;
   background: linear-gradient(to right, #9966ff, #de79fb);
   background-clip: text;
   color: transparent;

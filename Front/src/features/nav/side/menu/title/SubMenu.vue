@@ -25,7 +25,7 @@ const props = defineProps({
 .item {
   margin-top: 18px;
   color: white;
-  font-size: 12px;
+  font-size: 13px;
   border-radius: 30px;
   padding: 10px;
   position: relative;
