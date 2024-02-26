@@ -17,14 +17,12 @@ const router = createRouter({
         } else {
             return new Promise((resolve) => {
                 nextTick(() => {
-                    let scrollPosition = 0;
-                    if (to.path !== '/') {
-                        scrollPosition = window.innerHeight;
+                    if (to.path === '/') {
+                        resolve({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
                     }
-                    resolve({
-                        top: scrollPosition,
-                        behavior: 'smooth'
-                    });
                 });
             });
         }
