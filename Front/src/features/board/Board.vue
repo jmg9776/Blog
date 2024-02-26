@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, nextTick, onMounted, Ref, ref, watch} from 'vue';
+import {computed, nextTick, onMounted, ref, watch} from 'vue';
 import {useRoute} from 'vue-router';
 import {BoardService} from '@/features/board/BoardService.ts'
 import noImage from "@/assets/noimage.png";
