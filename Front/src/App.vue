@@ -37,7 +37,9 @@ function toggle() {
         class="content"
         :class="{'content-max-view-width':maxViewWidth, 'content-width':!maxViewWidth}">
       <section>
-        <router-view :maxViewWidth="maxViewWidth"/>
+        <div class="fit">
+          <router-view :maxViewWidth="maxViewWidth"/>
+        </div>
       </section>
       <div class="footer">
         <div class="footer-text">
@@ -52,6 +54,9 @@ function toggle() {
 </template>
 
 <style scoped>
+.fit {
+  margin: auto;
+}
 section {
   height: max-content;
   background: white;

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {computed, onMounted, ref, watch} from 'vue';
+import {computed, nextTick, onMounted, Ref, ref, watch} from 'vue';
 import {useRoute} from 'vue-router';
 import {BoardService} from '@/features/board/BoardService.ts'
 import noImage from "@/assets/noimage.png";
@@ -21,6 +21,13 @@ async function getPostList(boardName: string) {
   const response = boardService.getBoardPostList(boardName, num.value);
   data.value = await response;
   max.value = data?.value?.totalPages ?? 0;
+  nextTick().then(() => {
+    const scrollToPosition = window.innerHeight;
+    window.scrollTo({
+      top: scrollToPosition,
+      behavior: 'smooth',
+    });
+  });
 }
 
 onMounted(() => {
@@ -51,7 +58,6 @@ const surroundingPages = computed(() => {
 
   return pages;
 });
-
 </script>
 
 <template>
@@ -61,7 +67,7 @@ const surroundingPages = computed(() => {
         <h1 class="gradiant">{{ boardName }}</h1>
       </div>
       <img :src="Line" alt="" class="line">
-      <div v-if="data && data.content.length > 0 && data" class="card">
+      <div v-if="data && data.content.length > 0 && data" class="card" :style="{ 'max-width': data.content.length === 4 ? '700px' : 'initial' }">
         <router-link v-for="value in data.content" :to="'/post/' + value.id" class="card-board">
           <div class="image-container">
             <template v-if="value.primaryImage==null">
@@ -124,7 +130,6 @@ const surroundingPages = computed(() => {
 .container {
   background: white;
   width: 100%;
-  padding: 0 0 100px;
   display: flex;
   justify-content: center;
 }
