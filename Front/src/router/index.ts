@@ -2,10 +2,12 @@ import {createRouter, createWebHistory} from 'vue-router';
 import Home from '@/features/home/Home.vue';
 import Board from "@/features/board/Board.vue";
 import {nextTick} from "vue";
+import Post from "@/features/post/Post.vue";
 
 const routes = [
     {path: '/', component: Home},
-    {path: '/board/:boardName', component: Board}
+    {path: '/board/:boardName', component: Board},
+    {path: '/post/:postNum', component: Post},
 ];
 
 const router = createRouter({

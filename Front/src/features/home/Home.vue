@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import GitMarkdown from "@/shared/components/GitMarkdown.vue";
 </script>
 
 <template>
-  하하하!
+  <GitMarkdown/>
 </template>
 
 <style scoped>
