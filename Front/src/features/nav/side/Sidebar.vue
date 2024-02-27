@@ -19,7 +19,6 @@ interface Board {
 
 onMounted(async () => {
   data.value = await apiService.getBardCategoryInfoAll();
-  console.log(data, data.value)
 });
 
 

@@ -1,5 +1,7 @@
-export interface PostList {
-    content: PostContent[];
+import {Post} from "@/features/post/Post.ts";
+
+export interface Board {
+    content: Post[];
     pageable: {
         pageNumber: number;
         pageSize: number;
@@ -25,14 +27,4 @@ export interface PostList {
     numberOfElements: number;
     first: boolean;
     empty: boolean;
-}
-
-export interface PostContent {
-    id: number;
-    title: string;
-    view: number;
-    createAt: string;
-    boardName: string;
-    primaryImage: null | string;
-    content: string;
 }

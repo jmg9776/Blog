@@ -4,7 +4,7 @@ import {useRoute} from 'vue-router';
 import {BoardService} from '@/features/board/BoardService.ts'
 import noImage from "@/assets/noimage.png";
 import Line from "@/assets/line.png";
-import {PostList} from '@/features/board/PostList.ts'
+import {Board} from '@/features/board/Board.ts'
 import router from "@/router";
 import PageNation from "@/shared/components/Pagenation.vue";
 
@@ -14,7 +14,7 @@ const num = computed(() => route.query.num ? route.query.num as string : "0");
 
 const boardService = new BoardService();
 
-const data = ref<PostList | null>(null);
+const data = ref<Board | null>(null);
 const max = ref(10);
 
 async function getPostList(boardName: string) {
