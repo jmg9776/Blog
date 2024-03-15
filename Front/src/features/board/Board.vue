@@ -86,7 +86,6 @@ const surroundingPages = computed(() => {
                 조회수 : {{ value.view }}
               </p>
             </div>
-
             <p class="title">
               {{ value.title }}
             </p>

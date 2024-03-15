@@ -19,10 +19,9 @@ const props = defineProps({
 <template>
   <template v-if="props.data">
     <div class="markdown-body">
-      <h1>Spring MVC 특징</h1>
-      <h5 style="display:flex;"><p style="flex: 1">2024.02.27</p>
-        <p>조회수 10</p></h5>
-      <h3>목차</h3>
+      <h1>{{ data.title }}</h1>
+      <h5 style="display:flex;"><p style="flex: 1">{{data.createAt}}</p>
+        <p>조회수 : {{ data.view }}</p></h5>
     </div>
     <Markdown :source="props.data.content" :md="md" class="markdown-body"/>
   </template>

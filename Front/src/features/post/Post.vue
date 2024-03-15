@@ -16,9 +16,9 @@ onMounted(() => {
 })
 
 const data = Builder<Post>().content(`
+목차
 [Toc]
 # Spring MVC 특징
-
 ![ojIvGml.png](https://i.imgur.com/ojIvGml.png)
 
 스프링은 다양한 기능들을 제공하는데, 그 중에서 웹 개발에 중점을 둔 부분이 스프링 MVC에요. 이를 간단하게 정리하면
@@ -89,7 +89,7 @@ Spring Web MVC에서의 \`DispatcherServlet\`과 같은 주요 컴포넌트들�
 4. **Bean 소멸**: ApplicationContext가 종료될 때 빈의 생명주기도 끝나게 되요.
 
 이런 단계들을 거치며, 스프링은 개발자가 객체의 생명주기나 의존성 주입과 같은 작업에 집중하지 않고 핵심 비즈니스 로직에만 집중할 수 있게 도와줘요.
-`).createAt(new Date().toString()).title("하하하하").view(3).build();
+`).createAt(new Date().toString()).title("Spring MVC ").view(3).build();
 </script>
 
 <template>
