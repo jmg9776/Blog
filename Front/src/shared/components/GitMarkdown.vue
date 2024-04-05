@@ -196,6 +196,7 @@ nav {
   border-style: none;
   max-width: 100%;
   box-sizing: content-box;
+  border-radius: 8px;
   background-color: var(--color-canvas-default);
 }
 
@@ -1203,6 +1204,7 @@ ol {
   padding: 0;
   border: rgb(217,222,227) solid 1px;
   border-radius: 5px;
+  margin-bottom: 20px;
 }
 
 .table-of-contents > ol {
