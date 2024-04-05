@@ -1,0 +1,18 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/schema
+    username: ""
+    password: ""
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: com.jmg.blog.infrastructure.config.JpaPhysicalNamingStrategy
+    show-sql: true
+  querydsl:
+    enabled: true
+  data:
+    redis:
+      host: localhost
+      port: 6379
