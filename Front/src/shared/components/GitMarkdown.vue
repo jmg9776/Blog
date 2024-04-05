@@ -17,7 +17,7 @@ const props = defineProps({
 </script>
 
 <template>
-  <template v-if="props.data">
+  <template v-if="props && props.data && props.data.content">
     <div class="markdown-body">
       <h1>{{ data.title }}</h1>
       <h5 style="display:flex;"><p style="flex: 1">{{data.createAt}}</p>
