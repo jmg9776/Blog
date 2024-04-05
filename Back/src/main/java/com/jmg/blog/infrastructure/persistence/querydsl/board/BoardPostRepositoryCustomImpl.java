@@ -70,7 +70,7 @@ public class BoardPostRepositoryCustomImpl implements BoardPostRepositoryCustom 
                 boardPost.createAt,
                 board.name,
                 boardPost.primaryImage,
-                boardPost.content.substring(0, 30)
+                boardPost.content.substring(0, 60)
         );
     }
 

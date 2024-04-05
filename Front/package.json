@@ -1,7 +1,7 @@
 {
   "name": "portfolio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,9 +10,14 @@
   },
   "dependencies": {
     "axios": "^1.6.7",
+    "builder-pattern": "^2.2.0",
+    "markdown-it": "^14.0.0",
+    "markdown-it-table-of-contents": "^0.6.0",
     "normalize.css": "^8.0.1",
+    "pinia": "^2.1.7",
     "vue": "^3.3.8",
     "vue-router": "^4.2.5",
+    "vue3-markdown-it": "^1.0.10",
     "vuex": "^4.1.0"
   },
   "devDependencies": {
