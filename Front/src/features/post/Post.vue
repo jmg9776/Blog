@@ -1,13 +1,13 @@
 <script setup lang="ts">
 
 import GitMarkdown from "@/shared/components/GitMarkdown.vue";
-import {computed, nextTick, onMounted, ref} from "vue";
+import {nextTick, onMounted, ref} from "vue";
 import {Builder} from "builder-pattern";
 import {Post} from "@/features/post/Post.ts";
+import {computed} from "vue";
 import {useRoute} from "vue-router";
-import {PostService} from "@/features/post/PostService.ts"
-
 const route = useRoute();
+import {PostService} from "@/features/post/PostService.ts"
 
 const num = computed(() => route.params.postNum as string);
 const postService = new PostService();
@@ -25,7 +25,13 @@ onMounted(async () => {
 })
 
 async function getPostList() {
-  data.value = await postService.getBoardPost(num.value);
+  const response:Post = await postService.getBoardPost(num.value);
+  response.content =`
+목차
+[Toc]
+${response.content}
+`
+  data.value = response;
 }
 
 const data = ref<Post>( Builder<Post>().content(`

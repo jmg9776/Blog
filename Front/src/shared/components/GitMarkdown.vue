@@ -17,20 +17,21 @@ const props = defineProps({
 </script>
 
 <template>
-  <template v-if="props && props.data && props.data.content">
-    <div class="markdown-body">
-      <h1>{{ data.title }}</h1>
-      <h5 style="display:flex;"><p style="flex: 1">{{data.createAt}}</p>
-        <p>조회수 : {{ data.view }}</p></h5>
+  <div style="margin-top: 50px">
+    <template v-if="props && props.data && props.data.content">
+      <div class="markdown-body">
+        <h1>{{ data.title }}</h1>
+        <h5 style="display:flex;"><p style="flex: 1">{{data.createAt}}</p>
+          <p>조회수 : {{ data.view }}</p></h5>
+      </div>
+      <Markdown :source="props.data.content" :md="md" class="markdown-body"/>
+    </template>
+    <div v-else>
+      <h1 style="font-size: 24px;">
+        오류! 게시글을 찾을 수 없습니다.
+      </h1>
     </div>
-    <Markdown :source="props.data.content" :md="md" class="markdown-body"/>
-  </template>
-  <div v-else>
-    <h1 style="font-size: 24px;">
-      오류! 게시글을 찾을 수 없습니다.
-    </h1>
   </div>
-
 </template>
 
 <style>
@@ -86,7 +87,6 @@ const props = defineProps({
   --color-danger-emphasis: #cf222e;
   --color-done-fg: #8250df;
   --color-done-emphasis: #8250df;
-  margin-top: 50px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   color: var(--color-fg-default);
@@ -409,7 +409,7 @@ const props = defineProps({
 .markdown-body ol {
   margin-top: 0;
   margin-bottom: 0;
-  padding-left: 1.2em;
+  padding-left: 0;
 }
 
 .markdown-body ol ol,
@@ -631,9 +631,25 @@ const props = defineProps({
   margin-top: 16px;
 }
 
-.markdown-body li + li {
+.markdown-body li {
+  list-style-type: none; /* 기본 목록 스타일 제거 */
+  position: relative; /* 가상 요소 위치 기준 설정 */
+  padding-left: 20px; /* 텍스트와 단추 사이 간격 조정 */
   margin-top: .25em;
 }
+
+.markdown-body li::before {
+  content: ''; /* 필수 속성 */
+  position: absolute;
+  left: 0; /* 목록 텍스트 왼쪽에 단추 위치 */
+  top: 60%; /* 세로 중앙 정렬 */
+  transform: translateY(-50%); /* 세로 중앙 정렬 보정 */
+  width: 8px; /* 단추 가로 크기 */
+  height: 8px; /* 단추 세로 크기 */
+  background-color: #403d39; /* 단추 배경색 */
+  border-radius: 50%; /* 원형 단추 */
+}
+
 
 .markdown-body dl {
   padding: 0;
