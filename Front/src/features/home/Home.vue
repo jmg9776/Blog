@@ -3,7 +3,7 @@ import GitMarkdown from "@/shared/components/GitMarkdown.vue";
 import {Builder} from "builder-pattern";
 import {Post} from "@/features/post/Post.ts";
 const data = Builder<Post>().content(`## 문제해결에서 가치를 창출하는, 생각하는 개발자
-
+[toc]
 
 ![](https://i.imgur.com/bzyWUb7.png)
 

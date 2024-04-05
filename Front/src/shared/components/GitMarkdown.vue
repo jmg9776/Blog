@@ -35,7 +35,9 @@ const props = defineProps({
 </template>
 
 <style>
-
+nav {
+  padding: 0;
+}
 .markdown-body {
   /*light*/
   --color-prettylights-syntax-comment: #57606a;
@@ -135,6 +137,8 @@ const props = defineProps({
 }
 
 .markdown-body a {
+  margin-top: 6px;
+  margin-left: 15px;
   background-color: transparent;
   color: var(--color-accent-fg);
   text-decoration: none;
@@ -642,7 +646,7 @@ const props = defineProps({
   content: ''; /* 필수 속성 */
   position: absolute;
   left: 0; /* 목록 텍스트 왼쪽에 단추 위치 */
-  top: 60%; /* 세로 중앙 정렬 */
+  top: 15px; /* 세로 중앙 정렬 */
   transform: translateY(-50%); /* 세로 중앙 정렬 보정 */
   width: 8px; /* 단추 가로 크기 */
   height: 8px; /* 단추 세로 크기 */
@@ -1195,8 +1199,13 @@ ol {
   margin: 0;
 }
 
+.table-of-contents {
+  padding: 0;
+  border: rgb(217,222,227) solid 1px;
+  border-radius: 5px;
+}
+
 .table-of-contents > ol {
-  margin-top: 15px;
   list-style-type: none;
   padding: 0;
 }
@@ -1207,6 +1216,11 @@ ol {
   margin-bottom: 10px;
 }
 
+.table-of-contents li::before {
+  content: none; /* ::before 가상 요소를 사용하지 않음 */
+  position: static; /* 기본값으로 재설정 */
+  transform: none; /* 기본값으로 재설정 */
+}
 
 .table-of-contents a {
   color: #333333;
