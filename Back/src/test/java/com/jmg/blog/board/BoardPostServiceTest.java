@@ -1,6 +1,8 @@
 package com.jmg.blog.board;
 
 import com.jmg.blog.application.board.service.BoardPostService;
+import com.jmg.blog.domain.board.model.BoardPost;
+import com.jmg.blog.infrastructure.mapper.BoardPostMapper;
 import com.jmg.blog.presentation.controller.board.response.BoardPostResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -24,6 +26,10 @@ public class BoardPostServiceTest {
     @Autowired
     private BoardPostService boardPostService;
     private static final Logger logger = LoggerFactory.getLogger(BoardPostServiceTest.class);
+
+    @Autowired
+    private BoardPostMapper boardPostMapper;
+
     @Test
     @DisplayName("게시글 목록 불러오기")
     void boardPostListTest() {
@@ -38,5 +44,13 @@ public class BoardPostServiceTest {
         logger.info(allPosts.toString());
         // 결과가 null이 아닌지 확인합니다.
         assertNotNull(allPosts, "모든 게시글 목록이 null입니다.");
+    }
+
+    @Test
+    @DisplayName("1번 게시글 확인하기")
+    void findBoardPost() {
+        BoardPost boardPost = boardPostService.findBoardPostByPostId(1L);
+        assertNotNull(boardPost.getContent());
+        logger.info(boardPostMapper.toBoardPostResponse(boardPost).title());
     }
 }
