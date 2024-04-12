@@ -20,5 +20,5 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div ref="shadowHost" style="margin: 50px auto auto;width: 100%; max-width: 1100px"></div>
+  <div ref="shadowHost" style="margin: 50px auto auto;width: 95%; max-width: 1100px"></div>
 </template>
