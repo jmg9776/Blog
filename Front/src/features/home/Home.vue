@@ -146,7 +146,7 @@
             <p id="3063664f-aea5-4592-bcdc-f8d22e9f46ea" class="">해킹 기법 및 방어 교육 및 실습, XSS, SQL Injection등<br/>해킹 기법 시연 및
               발표<br/><br/></p></div>
         </div>
-        <details open="">
+        <details>
           <summary style="font-weight:600;font-size:1.5em;line-height:1.5;margin:0">CERTIFICATE (4)</summary>
           <div class="indented">
             <hr id="b7bb49ac-5831-43cb-a6cf-37c6b2fdbff3"/>
@@ -190,7 +190,7 @@
         </details>
         <p id="d7617dad-c001-4a04-a076-927a206582a8" class="">
         </p>
-        <details open="">
+        <details>
           <summary style="font-weight:600;font-size:1.5em;line-height:1.5;margin:0">AWARD (11)</summary>
           <div class="indented">
             <hr id="1be2426e-ea3c-49ec-8606-58f89a51cd43"/>
