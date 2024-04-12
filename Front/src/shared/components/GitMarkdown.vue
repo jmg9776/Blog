@@ -17,24 +17,27 @@ const props = defineProps({
 </script>
 
 <template>
-  <template v-if="props.data">
-    <div class="markdown-body">
-      <h1>{{ data.title }}</h1>
-      <h5 style="display:flex;"><p style="flex: 1">{{data.createAt}}</p>
-        <p>조회수 : {{ data.view }}</p></h5>
+  <div style="margin-top: 50px">
+    <template v-if="props && props.data && props.data.content">
+      <div class="markdown-body">
+        <h1>{{ data.title }}</h1>
+        <h5 style="display:flex;"><p style="flex: 1">{{data.createAt}}</p>
+          <p>조회수 : {{ data.view }}</p></h5>
+      </div>
+      <Markdown :source="props.data.content" :md="md" class="markdown-body"/>
+    </template>
+    <div v-else>
+      <h1 style="font-size: 24px;">
+        오류! 게시글을 찾을 수 없습니다.
+      </h1>
     </div>
-    <Markdown :source="props.data.content" :md="md" class="markdown-body"/>
-  </template>
-  <div v-else>
-    <h1 style="font-size: 24px;">
-      오류! 게시글을 찾을 수 없습니다.
-    </h1>
   </div>
-
 </template>
 
 <style>
-
+nav {
+  padding: 0;
+}
 .markdown-body {
   /*light*/
   --color-prettylights-syntax-comment: #57606a;
@@ -86,7 +89,6 @@ const props = defineProps({
   --color-danger-emphasis: #cf222e;
   --color-done-fg: #8250df;
   --color-done-emphasis: #8250df;
-  margin-top: 50px;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
   color: var(--color-fg-default);
@@ -135,6 +137,8 @@ const props = defineProps({
 }
 
 .markdown-body a {
+  margin-top: 6px;
+  margin-left: 15px;
   background-color: transparent;
   color: var(--color-accent-fg);
   text-decoration: none;
@@ -192,6 +196,7 @@ const props = defineProps({
   border-style: none;
   max-width: 100%;
   box-sizing: content-box;
+  border-radius: 8px;
   background-color: var(--color-canvas-default);
 }
 
@@ -409,7 +414,7 @@ const props = defineProps({
 .markdown-body ol {
   margin-top: 0;
   margin-bottom: 0;
-  padding-left: 1.2em;
+  padding-left: 0;
 }
 
 .markdown-body ol ol,
@@ -631,9 +636,25 @@ const props = defineProps({
   margin-top: 16px;
 }
 
-.markdown-body li + li {
+.markdown-body li {
+  list-style-type: none; /* 기본 목록 스타일 제거 */
+  position: relative; /* 가상 요소 위치 기준 설정 */
+  padding-left: 20px; /* 텍스트와 단추 사이 간격 조정 */
   margin-top: .25em;
 }
+
+.markdown-body li::before {
+  content: ''; /* 필수 속성 */
+  position: absolute;
+  left: 0; /* 목록 텍스트 왼쪽에 단추 위치 */
+  top: 15px; /* 세로 중앙 정렬 */
+  transform: translateY(-50%); /* 세로 중앙 정렬 보정 */
+  width: 8px; /* 단추 가로 크기 */
+  height: 8px; /* 단추 세로 크기 */
+  background-color: #403d39; /* 단추 배경색 */
+  border-radius: 50%; /* 원형 단추 */
+}
+
 
 .markdown-body dl {
   padding: 0;
@@ -1179,8 +1200,14 @@ ol {
   margin: 0;
 }
 
+.table-of-contents {
+  padding: 0;
+  border: rgb(217,222,227) solid 1px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
 .table-of-contents > ol {
-  margin-top: 15px;
   list-style-type: none;
   padding: 0;
 }
@@ -1191,6 +1218,11 @@ ol {
   margin-bottom: 10px;
 }
 
+.table-of-contents li::before {
+  content: none; /* ::before 가상 요소를 사용하지 않음 */
+  position: static; /* 기본값으로 재설정 */
+  transform: none; /* 기본값으로 재설정 */
+}
 
 .table-of-contents a {
   color: #333333;

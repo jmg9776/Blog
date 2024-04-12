@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import ViteImagemin from 'vite-plugin-imagemin';
+import { resolve } from 'path';
 
 export default defineConfig({
   server: {
@@ -18,7 +19,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@': new URL('./src', import.meta.url).pathname
+      '@': resolve(__dirname, './src'),
     }
   }
 })
