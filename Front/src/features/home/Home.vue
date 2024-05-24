@@ -20,5 +20,6 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div ref="shadowHost" style="margin: 50px auto auto;width: 95%; max-width: 1100px"></div>
+  <div ref="shadowHost" style="margin: 50px auto auto;width: 98%; max-width: 1100px; overflow: hidden; display: flex; flex-direction: row;"></div>
+
 </template>
