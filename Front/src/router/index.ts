@@ -6,6 +6,7 @@ import Post from "@/features/post/Post.vue";
 
 const routes = [
     {path: '/', component: Home},
+    {path: '/portfolio', component: Home},
     {path: '/board/:boardName', component: Board},
     {path: '/post/:postNum', component: Post},
 ];
@@ -22,6 +23,13 @@ const router = createRouter({
                     if (to.path === '/') {
                         resolve({
                             top: 0,
+                            behavior: 'smooth'
+                        });
+                    }
+                    if (to.path === '/portfolio') {
+                        const scrollHeight = document.documentElement.scrollHeight;
+                        resolve({
+                            top: scrollHeight,
                             behavior: 'smooth'
                         });
                     }
