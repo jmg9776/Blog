@@ -61,7 +61,7 @@ section {
   height: max-content;
   background: white;
   width: 100%;
-  padding: 30px 30px 100px;
+  padding: 15px 15px 100px;
   display: flex;
   justify-content: center;
   min-height: calc(100vh - 362px);
