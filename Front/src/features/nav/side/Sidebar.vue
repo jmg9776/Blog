@@ -32,7 +32,7 @@ const hamButtonClick = computed(() => store.state.hamButtonClick);
 
 <template>
   <div class="sidebar" :class="{ 'expanded': props.maxViewWidth, 'collapsed': !props.maxViewWidth&&!hamButtonClick }">
-    <img :src="profileBack" class="profile-background">
+    <img :src="profileBack" class="profile-background" alt="">
     <div class="profile-image-container">
       <img :src="profileImg" alt="Profile Image" class="profile-image">
     </div>
