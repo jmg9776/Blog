@@ -21,4 +21,9 @@ public class BoardPost {
     private Board board;
     @Column(length = 500)
     private String primaryImage;
+
+
+    public void updateView() {
+        view++;
+    }
 }
