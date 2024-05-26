@@ -22,6 +22,7 @@ public class BoardPostService {
     public BoardPost findBoardPostByPostId(Long postId) {
         BoardPost boardPost = boardPostRepository.findById(postId).orElseThrow();
         boardPost.updateView();
+        boardPostRepository.save(boardPost);
         return boardPostRepository.findById(postId).orElseThrow();
     }
 }
